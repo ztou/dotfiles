@@ -1,0 +1,38 @@
+
+set tabstop=4 softtabstop=4 shiftwidth=4
+set expandtab
+"set cindent
+set nu
+set incsearch
+set hlsearch
+set formatoptions=ntql
+set cursorline
+set smartcase
+set complete=.,w,b,u
+set backspace=indent,eol,start
+
+" VAssistX.VaSnippetInsert
+"nmap <C-]>                      :vsc VAssistX.GotoImplementation<CR>
+nmap <C-O>                      :vsc View.NavigateBackward<CR>
+nmap <C-I>                      :vsc View.NavigateForward<CR>
+nmap <Leader>c                  :vsc File.CopyFullPath<CR>
+map  <F4>                       :vsc Edit.CommentSelection<CR>
+map  <S-F4>                     :vsc Edit.UnCommentSelection<CR>
+
+"1-9 are not reconigzed by VIM.
+"nmap <Leader>9                  : vsc Tools.ExternalCommand9<CR>
+
+" clear the search result
+noremap <esc> <esc>:noh<CR><esc>
+
+" replace \ with /
+nmap <Leader>/ :s#\\#/#g<CR>
+
+" replace / with \
+nmap <Leader>\ :s#/#\#g<CR>
+
+nmap <Leader>w                  yaw<CR>
+map  <Leader>f                  =a{<CR> 
+nmap <C-c>                      : let @* = expand("%:p")<CR>
+
+nmap <Tab>                      :vsc VAssistX.OpenCorrespondingFile<CR>

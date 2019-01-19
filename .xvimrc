@@ -1,0 +1,31 @@
+"nmap <Tab> :xcmenucmd Jump to Next Counterpart<CR>
+nmap <Tab> :ncounterpart<CR>
+nmap <C-`> :xcmenucmd Show In Finder<CR>
+nmap <ESC> :noh<return><ESC>
+nmap <F3> :ni<CR>
+nmap <F2> :pi<CR>
+"nmap <A-v> :xcmenucmd Open With External Editor<CR>
+
+
+set incsearch
+:highlight Search guibg=#FF0000
+:highlight Search guibg=blue
+set hlsearch
+
+" Case-insensitive searching.
+set ignorecase
+set smartcase
+set gdefault
+set paste
+
+set nu
+set showmatch
+
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+
+set cursorline
+
+"map ,c :xccmd complete<CR>
+"map ,o :xccmd openQuickly<CR>
