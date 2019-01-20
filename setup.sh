@@ -40,6 +40,18 @@ echo "installing fzf"
 git submodule update --init
 $CURRENT_DIR/sb/fzf/install --key-bindings --completion --update-rc
 
+# zsh
+create_link ~/.fzfrc.bash
+create_link ~/.zshrc
+
+# plugins
+# brew install thefuck
+if [ -d ~/.oh-my-zsh ]; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+fi
+
 echo "--------------------------------------------------"
 echo "      ~/dotfiles are installed successfully"
 echo "--------------------------------------------------"

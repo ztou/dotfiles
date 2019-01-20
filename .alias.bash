@@ -1,5 +1,5 @@
 v_path='/Scripts/activate'
-if [ "`uname`" == "Darwin" ] || [ "`uname`" == "Linux" ]; then
+if [ "`uname`" = "Darwin" ] || [ "`uname`" = "Linux" ]; then
     v_path='/bin/activate'
 fi
 
