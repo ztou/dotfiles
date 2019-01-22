@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 export TERM=xterm-256color
 
 # If you come from bash you might have to change your $PATH.
@@ -12,7 +14,7 @@ export ZSH="/Users/Johnny/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961 
+# https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961
 # shorter prompt
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
@@ -115,3 +117,6 @@ alias reload='source ~/.zshrc'
 
 source ~/.fzfrc.bash
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+#https://github.com/github/hub/tree/master/etc
+eval "$(hub alias -s)"

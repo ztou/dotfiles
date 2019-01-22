@@ -20,10 +20,18 @@ source_bash $DOTFILES/.alias.bash
 source_bash $DOTFILES/.priv.bash
 source_bash $DOTFILES/sb/z/z.sh
 source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
+eval "$(hub alias -s)"
 
 #                   git auto completion
 # --------------------------------------------------
-# C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
+# Windows - C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
+
+# Linux - /etc/bash_completion.d/git
+[ -f /etc/bash_completion.d/git ] && source /etc/bash_completion.d/git
+
+# Mac - brew install bash-completion
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
 __git_complete ga _git_add
 __git_complete gb _git_branch
 __git_complete gco _git_checkout
