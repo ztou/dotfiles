@@ -1,3 +1,5 @@
+#!/bin/bash
+
 v_path='/Scripts/activate'
 if [ "`uname`" = "Darwin" ] || [ "`uname`" = "Linux" ]; then
     v_path='/bin/activate'
@@ -70,7 +72,6 @@ alias pd0='parity-d --config node0.toml -l parity-wasm=debug'
 #                   git
 # --------------------------------------------------
 alias gch='git config --global credential.helper '\''cache --timeout=36000'\'''
-alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gcr='git clone --recursive'
 
 alias ga='git add'
@@ -130,6 +131,7 @@ alias evim='export GIT_EDITOR=vim'
 
 #                   hub
 # --------------------------------------------------
+alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gp='git push -u origin $(gcb)'
 alias gpf='git push origin +$(gcb)'
 alias hb='hub browse'
