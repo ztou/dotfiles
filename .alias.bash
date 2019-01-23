@@ -1,18 +1,23 @@
 #!/bin/bash
 
+#                   Windows specific
+# --------------------------------------------------
 v_path='/Scripts/activate'
+alias open='explorer'
+alias cc='cmd //c'
+
 if [ "`uname`" = "Darwin" ] || [ "`uname`" = "Linux" ]; then
     v_path='/bin/activate'
+    unalias open
+    unalias cc
 fi
 
 #                   general
 # --------------------------------------------------
 alias reload='source ~/.bashrc'
-alias open='explorer'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias cc='cmd //c'
 alias td='tree -d -L 2'
 alias t='tree -L 2'
 
