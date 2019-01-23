@@ -20,7 +20,7 @@ source_bash $DOTFILES/.alias.bash
 source_bash $DOTFILES/.priv.bash
 source_bash $DOTFILES/sb/z/z.sh
 source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
-eval "$(hub alias -s)"
+eval "$(hub alias -s bash)"
 
 #                   git auto completion
 # --------------------------------------------------
