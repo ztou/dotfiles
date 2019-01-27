@@ -9,7 +9,7 @@ export MSYS=winsymlinks:nativestrict
 function backup_link() {
     full_link=$1
     old_link=$full_link.old
-    if [ -f "$full_link" ]; then
+    if [ -f "$full_link" ] && ! [ -L "$full_link" ]; then
         echo "found $full_link, rename it to $old_link"
         mv "$full_link" "$old_link"
     fi
@@ -59,14 +59,15 @@ create_link ~/.vsvimrc
 create_link ~/.xvimrc
 create_link ~/.tmux.conf
 
+# zsh - move this up, since fzf will create the .zshrc/.bashrc file
+create_link ~/.fzfrc.bash
+backup_link ~/.zshrc
+create_link ~/.zshrc
+
 echo "installing fzf"
 git submodule update --init
 "$CURRENT_DIR/sb/fzf/install" --key-bindings --completion --update-rc
 
-# zsh
-create_link ~/.fzfrc.bash
-backup_link ~/.zshrc
-create_link ~/.zshrc
 
 # plugins
 # brew install thefuck
