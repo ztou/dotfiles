@@ -18,10 +18,13 @@ function backup_link() {
 function create_link() {
     full_link=$1
     name=$(basename "$full_link")
+    source_link=~/dotfiles/$name
 
-    if ln -s ~/dotfiles/$name "$full_link"
-    then
-        echo "create link: $full_link to ~/dotfile/$name successfully"
+    if [ -f "$source_link" ]; then
+        if ln -s "$source_link" "$full_link"
+        then
+            echo "create link: $full_link to $source_link successfully"
+        fi
     fi
 
     old_link=$full_link.old
@@ -72,6 +75,19 @@ if [ -d ~/.oh-my-zsh ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 fi
+
+
+#                   git auto completion
+# --------------------------------------------------
+case "$(uname -s)" in
+    Linux*)     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
+
+    Darwin*)    brew install bash-completion;;
+
+    # Windows - C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
+    *)
+esac
+
 
 echo "--------------------------------------------------"
 echo "      ~/dotfiles are installed successfully"

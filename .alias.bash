@@ -6,7 +6,7 @@ v_path='/Scripts/activate'
 alias open='explorer'
 alias cc='cmd //c'
 
-if [ "`uname`" = "Darwin" ] || [ "`uname`" = "Linux" ]; then
+if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
     v_path='/bin/activate'
     unalias open
     unalias cc
@@ -23,27 +23,21 @@ alias t='tree -L 2'
 
 #                   python
 # --------------------------------------------------
-alias penv='source `pipenv --venv`/$v_path'
+alias penv='source $(pipenv --venv)/$v_path'
 alias plr='pipenv lock -r'
 
 alias cvenv='virtualenv venv'
 alias svenv='source venv/$v_path'
-alias t-wsa='python main.py -env dev -key '
 alias pir='pip install -r requirements.txt'
 alias va='pre-commit run --all-files'
 
-#                   ruby
-# --------------------------------------------------
-alias bi='bundle install'
-alias bu='bundle update'
-alias js='bundle exec jekyll serve'
 
 #                   docker
 # --------------------------------------------------
 alias ds='docker start -ai'
 alias dp='docker ps'
 alias dr='docker run -it'
-alias dre='docker run -it --env-file ${VW_ENV}'
+alias dre='docker run -it --env-file ${ENV_FILE}'
 
 
 #                   vault
@@ -51,28 +45,11 @@ alias dre='docker run -it --env-file ${VW_ENV}'
 alias vl='vault login -method=ldap username=huangjoh'
 alias vw-dev='vault write -format=json account/849563745824/sts/Resource-Admin -ttl=12h'
 #alias vw-wsa='vault write cosv2-c-uw2/iwwsa-c-uw2/aws/sts/app ttl=12h'
+tm_py='c:/dropbox/code/python/token-make/tm.py'
+alias vw-wsa='python ${tm_py} -app iwwsa-c-uw2'
+alias vw-opt='python ${tm_py} -app iwopt-c-uw2-hv'
+alias vw-mb='python ${tm_py} -app iwmb-c-uw2'
 
-vw_py='c:/dropbox/code/python/aws-tools/vw.py'
-alias vw-wsa='python ${vw_py} iwwsa'
-alias vw-opt='python ${vw_py} iwopt'
-alias vw-mb='python ${vw_py} iwmb'
-
-#                   rust
-# --------------------------------------------------
-alias cn='cargo new'
-alias cb='cargo build'
-alias cr='cargo run'
-alias cf='cargo fmt'
-alias cbw='cargo build --release --target wasm32-unknown-unknown'
-alias wbw='wasm-build --target wasm32-unknown-unknown'
-alias ce='cargo expand'
-alias cee='cargo expand >./src/expand.rs'
-
-#                   parity
-# --------------------------------------------------
-alias p0='parity --config node0.toml -l parity-wasm=debug'
-alias pd0='parity-d --config node0.toml -l parity-wasm=debug'
-#export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 #                   git
 # --------------------------------------------------
