@@ -27,8 +27,13 @@ export FZF_CTRL_R_OPTS='--preview "echo {}" --preview-window down:3:hidden:wrap'
 export FZF_ALT_C_COMMAND='fd --type d'
 export FZF_ALT_C_OPTS='--bind "F3:toggle-preview" --preview "tree -L 2 -C {} | head -200"'
 
+g() {
+  [ $# -gt 0  ] && _z "$*" && return
+  echo "$(_z -l 2>&1 | fzf --no-height --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+}
+
 unalias z 2> /dev/null
 z() {
   [ $# -gt 0  ] && _z "$*" && return
-  cd "$(_z -l 2>&1 | fzf --no-height --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+  cd $(g)
 }
