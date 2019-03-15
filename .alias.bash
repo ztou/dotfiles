@@ -49,6 +49,7 @@ tm_py='c:/dropbox/code/python/token-make/tm.py'
 alias vw-wsa='python ${tm_py} -app iwwsa-c-uw2'
 alias vw-opt='python ${tm_py} -app iwopt-c-uw2-hv'
 alias vw-mb='python ${tm_py} -app iwmb-c-uw2'
+alias vw-st='python ${tm_py} -app iwcostst-c-uw2-p1'
 
 
 #                   git
@@ -69,6 +70,7 @@ alias gco='git checkout'
 alias grh='git reset HEAD'
 
 alias gd='git diff'
+alias gds='git diff --submodule=diff'
 alias gdt='git difftool --no-prompt --tool=am'
 alias gdc='git diff --cached'
 alias gdct='git difftool --cached --no-prompt --tool=am'
@@ -104,10 +106,11 @@ alias gff='git flow feature finish'
 
 alias gfm='git fetch origin master:master'
 alias gcm='git fetch origin master:master && git checkout master'
+alias gcom='git fetch origin master:refs/remotes/origin/master && git checkout origin/master'
+
 alias grom='git rebase origin/master'
 alias grm='git rebase master'
 
-alias gjoint='!bash -c '\''diff -u <(git rev-list --first-parent "${1:-master}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne "s/^ //p" | head -1'\'' -'
 alias egvim='export GIT_EDITOR=gvim'
 alias evim='export GIT_EDITOR=vim'
 

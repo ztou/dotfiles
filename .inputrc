@@ -6,3 +6,23 @@ Control-e: alias-expand-line
 "\e[B": history-search-forward
 set show-all-if-ambiguous on
 set completion-ignore-case on
+
+#https://conemu.github.io/en/CygwinMsys.html#bash-history
+
+# Ctrl-Left
+"\e[1;5C": forward-word
+
+# Ctrl-Right
+"\e[1;5D": backward-word
+
+# Ctrl-Del
+"\e[3;5~": kill-word
+
+# Ctrl-BS - kill word on the left
+"\x1F": "\C-w"
+
+# Ctrl-K - resets the terminal (commented, I prefer binding below)
+# "\C-k": "\C-e\C-uecho -e \"\\033c\\c\"\n"
+
+# Ctrl-K - clears the input line regardless of cursor pos
+"\C-k": "\C-e\C-u"

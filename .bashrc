@@ -3,8 +3,13 @@
 #DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 DOTFILES=~/dotfiles
 
+# from - https://conemu.github.io/en/CygwinMsys.html#bash-history
+
 # ignore duplicate
-export HISTCONTROL=ignoreboth:erasedups
+HISTCONTROL=ignoreboth:erasedups
+
+# Allow "sharing" of history between instances
+PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 function source_bash() {
     bash_file=$1
@@ -19,7 +24,10 @@ source_bash $DOTFILES/.alias.bash
 source_bash $DOTFILES/.priv.bash
 source_bash $DOTFILES/sb/z/z.sh
 source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
-eval "$(hub alias -s bash)"
+
+# disable hub alias since it causes 0.07 second delay on running bash command
+#
+#eval "$(hub alias -s bash)"
 
 
 #                   git auto completion
@@ -43,3 +51,4 @@ __git_complete gco _git_checkout
 # --------------------------------------------------
 source_bash $DOTFILES/.fzfrc.bash
 source_bash ~/.fzf.bash
+

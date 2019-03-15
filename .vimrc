@@ -58,7 +58,7 @@ noremap j gj
 noremap k gk
 
 if has('win32')
-  set guifont=Source_Code_Pro_for_Powerline:h11
+  set guifont=Source_Code_Pro_for_Powerline:h13
 else
   set guifont=Menlo\ Regular\ for\ Powerline:h11
 endif
