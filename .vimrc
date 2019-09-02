@@ -71,7 +71,7 @@ set number
 set showcmd
 set incsearch
 set hlsearch
-"clear the search 
+"clear the search
 nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
 
 set encoding=utf-8

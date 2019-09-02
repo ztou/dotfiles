@@ -16,8 +16,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # https://medium.com/@Clovis_app/configuration-of-a-beautiful-efficient-terminal-and-prompt-on-osx-in-7-minutes-827c29391961
 # shorter prompt
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir rbenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv virtualenv status root_indicator background_jobs history time)
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -89,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -120,3 +120,8 @@ source ~/.fzfrc.bash
 
 #https://github.com/github/hub/tree/master/etc
 eval "$(hub alias -s)"
+
+export PIPENV_VENV_IN_PROJECT=1
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

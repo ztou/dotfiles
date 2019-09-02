@@ -65,7 +65,7 @@ backup_link ~/.zshrc
 create_link ~/.zshrc
 
 echo "installing fzf"
-git submodule update --init
+git submodule update --init --recursive
 "$CURRENT_DIR/sb/fzf/install" --key-bindings --completion --update-rc
 
 
@@ -82,7 +82,7 @@ fi
 case "$(uname -s)" in
     Linux*)     sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
 
-    Darwin*)    brew install bash-completion hub thefuck;;
+    Darwin*)    brew install bash-completion hub thefuck pyenv;;
 
     # Windows - C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
     *)
