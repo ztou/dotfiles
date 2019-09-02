@@ -58,10 +58,12 @@ noremap j gj
 noremap k gk
 
 if has('win32')
-  set guifont=Source_Code_Pro_for_Powerline:h13
+  set guifont=Fira\ Code:h15
 else
   set guifont=Menlo\ Regular\ for\ Powerline:h11
+  "set guifont=Source_Code_Pro_for_Powerline:h13
 endif
+set guifont=Fira\ Code\ Retina:h13
 
 set backspace=indent,eol,start
 set ruler
@@ -236,3 +238,5 @@ nmap <Leader>n :%! xxd -r<CR>
 nmap <Leader>r :source ~\.vimrc<CR>
 nmap <Leader>e :e ~\.vimrc<CR>
 
+nmap <Leader>d :e ++ff=dos<CR>
+nmap <Leader>u :e ++ff=unix<CR>

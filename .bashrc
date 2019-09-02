@@ -10,6 +10,7 @@ HISTCONTROL=ignoreboth:erasedups
 
 # Allow "sharing" of history between instances
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
+#PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 function source_bash() {
     bash_file=$1

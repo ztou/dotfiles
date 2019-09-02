@@ -80,7 +80,7 @@ fi
 #                   git auto completion
 # --------------------------------------------------
 case "$(uname -s)" in
-    Linux*)     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
+    Linux*)     sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
 
     Darwin*)    brew install bash-completion hub thefuck;;
 
