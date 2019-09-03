@@ -108,9 +108,9 @@ alias grh='git reset HEAD'
 
 alias gd='git diff'
 alias gds='git diff --submodule=diff'
-alias gdt='git difftool --no-prompt --tool=am'
-alias gdc='git diff --cached'
-alias gdct='git difftool --cached --no-prompt --tool=am'
+alias gdt='git difftool --submodule=diff --no-prompt --tool=am'
+alias gdc='git diff --submodule=diff --cached'
+alias gdct='git difftool --submodule=diff --cached --no-prompt --tool=am'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
 
