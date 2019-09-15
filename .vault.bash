@@ -1,10 +1,11 @@
 #                   vault
 # --------------------------------------------------
 
-export APP_ENV=dev
-export COS_MONIKER=cosv2-c-uw2
+export APP_DEFAULT=iwwsa
 export APP_SUFFIX=-c-uw2
-export APP_MONIKER=iwwsa-c-uw2
+export APP_MONIKER=$APP_DEFAULT$APP_SUFFIX
+
+export COS_MONIKER=cosv2-c-uw2
 export VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
 
 alias vl='vault login -method=ldap username=huangjoh'
@@ -14,8 +15,9 @@ alias vw-dev='vault write -format=json account/849563745824/sts/Resource-Admin -
 # Init vault environment
 #
 function ve() {
-    if [ -z "$1" ]; then
-        APP_ENV=$1
+    APP_ENV=$1
+    if [ -z "$APP_ENV" ]; then
+        APP_ENV=dev
     fi
     case $APP_ENV in
         dev )
@@ -46,7 +48,7 @@ function ve() {
 function update_app_moniker() {
     m=$1
     if [ -z "$1" ]; then
-        m=iwwsa
+        m=$APP_DEFAULT
     fi
 
     if [[ "$m" == *"-"* ]]; then
@@ -67,7 +69,7 @@ function vr() {
         TYPE=app
     fi
 
-    set -x && vault read ${COS_MONIKER}/${APP_MONIKER}/generic/${TYPE}Secrets
+    vault read ${COS_MONIKER}/${APP_MONIKER}/generic/${TYPE}Secrets
 }
 function vr-app() {
     vr "$1" app
@@ -91,7 +93,7 @@ function vw() {
         fi
 
         update_app_moniker "$1"
-        set -x && vault write ${COS_MONIKER}/${APP_MONIKER}/generic/${TYPE}Secrets @"$SECRET_FILE"
+        vault write ${COS_MONIKER}/${APP_MONIKER}/generic/${TYPE}Secrets @"$SECRET_FILE"
     fi
 }
 
@@ -112,5 +114,5 @@ function tm() {
     if [ -z "$TM_PY" ]; then
         TM_PY=~/x-hub/token-make/tm.py
     fi
-    set -x && python ${TM_PY} -app ${APP_MONIKER}
+    python ${TM_PY} -app ${APP_MONIKER}
 }
