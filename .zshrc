@@ -113,6 +113,7 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.alias.bash
+source ~/.vault.bash
 alias reload='source ~/.zshrc'
 
 source ~/.fzfrc.bash

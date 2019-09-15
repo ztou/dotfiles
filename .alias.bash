@@ -32,7 +32,7 @@ alias pidev='pip install -e .[dev]'
 alias pei='pipenv install'
 alias va='pre-commit run --all-files'
 
-alias pb='python setup.py sdist bdist_wheel --universal'
+alias pbuild='python setup.py sdist bdist_wheel --universal'
 alias pupload='python setup.py upload'
 
 function cvenv() {
@@ -58,36 +58,12 @@ function venv() {
 alias cv='cvenv'
 alias sv='svenv'
 alias vv='venv'
-
 #                   docker
 # --------------------------------------------------
 alias ds='docker start -ai'
 alias dp='docker ps'
 alias dr='docker run -it'
 alias dre='docker run -it --env-file ${ENV_FILE}'
-
-#                   vault
-# --------------------------------------------------
-
-alias ve-dev='export VAULT_ADDR=https://civ1.dv.adskengineer.net:8200'
-alias ve-stg='export VAULT_ADDR=https://civ1.st.adskengineer.net:8200'
-alias ve-prod='export VAULT_ADDR=https://civ1.pr.adskengineer.net:8200'
-alias vl='vault login -method=ldap username=huangjoh'
-
-# Read credentials
-
-alias vr-wsa='vault read cosv2-c-uw2/iwwsa-c-uw2/generic/appSecrets'
-
-# Generate AWS token
-
-alias vw-dev='vault write -format=json account/849563745824/sts/Resource-Admin -ttl=12h'
-#alias vw-wsa='vault write cosv2-c-uw2/iwwsa-c-uw2/aws/sts/app ttl=12h'
-alias vw-wsa='python ${TM_PY} -app iwwsa-c-uw2'
-alias vw-opt='python ${TM_PY} -app iwopt-c-uw2-hv'
-alias vw-mb='python ${TM_PY} -app iwmb-c-uw2'
-alias vw-ms='python ${TM_PY} -app iwms-c-uw2'
-alias vw-br='python ${TM_PY} -app iwbridge-c-uw2'
-alias vw-st='python ${TM_PY} -app iwcostst-c-uw2-p1'
 
 #                   git
 # --------------------------------------------------

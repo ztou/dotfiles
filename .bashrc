@@ -22,6 +22,7 @@ function source_bash() {
 }
 
 source_bash $DOTFILES/.alias.bash
+source_bash $DOTFILES/.vault.bash
 source_bash $DOTFILES/.priv.bash
 source_bash $DOTFILES/sb/z/z.sh
 source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
