@@ -58,6 +58,7 @@ create_link ~/.vimrc
 create_link ~/.vsvimrc
 create_link ~/.xvimrc
 create_link ~/.tmux.conf
+create_link ~/.isort.cfg
 
 # zsh - move this up, since fzf will create the .zshrc/.bashrc file
 create_link ~/.fzfrc.bash
