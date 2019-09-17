@@ -52,4 +52,3 @@ __git_complete gco _git_checkout
 # --------------------------------------------------
 source_bash $DOTFILES/.fzfrc.bash
 source_bash ~/.fzf.bash
-

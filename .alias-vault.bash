@@ -117,7 +117,7 @@ function tm() {
     update_app_moniker "$@"
 
     if [ -z "$TM_PY" ]; then
-        TM_PY=~/x-hub/token-make/tm.py
+        TM_PY=~/dotfiles/sb/vault-utils/tm.py
     fi
     python "$TM_PY" -app $APP_MONIKER
 }

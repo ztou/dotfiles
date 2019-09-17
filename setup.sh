@@ -46,8 +46,8 @@ if [ ! -d $vim_bundle ]; then
     popd || exit
 fi
 
-backup_link ~/.vault.bash
-create_link ~/.vault.bash
+create_link ~/.alias-git.bash
+create_link ~/.alias-vault.bash
 backup_link ~/.alias.bash
 create_link ~/.alias.bash
 backup_link ~/.priv.bash
