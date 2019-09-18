@@ -75,5 +75,5 @@ alias yi='yapf --recursive -i --style $YAPF_STYLE'
 #
 # other major alias
 # --------------------------------------------------
-source .alias-vault.bash
-source .alias-git.bash
+source ~/dotfiles/.alias-vault.bash
+source ~/dotfiles/.alias-git.bash
