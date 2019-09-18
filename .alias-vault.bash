@@ -7,6 +7,7 @@ export USER_DEFAULT=huangjoh
 export VAULT_FORMAT=json
 export VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
 
+export APP_ENV=dev
 export APP_SUFFIX=-c-uw2
 export APP_MONIKER=$APP_DEFAULT$APP_SUFFIX
 export COS_MONIKER=cosv2-c-uw2
@@ -63,7 +64,7 @@ function update_app_moniker() {
 
 # Read credentials from vault
 #
-#alias vr-wsa='vault read cosv2-c-uw2/iwwsa-c-uw2/generic/appSecrets'
+# alias vr-wsa='vault read cosv2-c-uw2/iwwsa-c-uw2/generic/appSecrets'
 function vr() {
     update_app_moniker "$1"
 
@@ -74,6 +75,7 @@ function vr() {
 
     vault read $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets
 }
+
 function vr-app() {
     vr "$1" "app"
 }
@@ -110,10 +112,9 @@ function vw-test() {
 
 # Generate AWS token
 #
-# alias vw-wsa='python ${TM_PY} -app iwwsa-c-uw2'
 # cmd='vault write cosv2-c-uw2/iwwsa-c-uw2/aws/sts/app ttl=12h'
 #
-function tm() {
+function kk() {
     update_app_moniker "$@"
 
     if [ -z "$TM_PY" ]; then

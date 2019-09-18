@@ -85,7 +85,7 @@ fi
 case "$(uname -s)" in
     Linux*)     sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
 
-    Darwin*)    brew install bash-completion hub thefuck pyenv pyenv-virtualenv;;
+    Darwin*)    brew install jq bash-completion hub thefuck pyenv pyenv-virtualenv;;
 
     # Windows - C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
     *)
