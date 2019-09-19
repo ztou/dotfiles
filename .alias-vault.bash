@@ -27,25 +27,44 @@ function ve() {
             VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
             COS_MONIKER=cosv2-c-uw2
             APP_SUFFIX=-c-uw2;;
+
         stg )
             VAULT_ADDR=https://civ1.st.adskengineer.net:8200
-            COS_MONIKER=cosv2-s-ue1-ds
-            APP_SUFFIX=-s-ue1;;
+
+            if [[ "$2" == "dn" ]]; then
+                COS_MONIKER=cosv2-s-ue1-dn
+                APP_SUFFIX=-s-ue1-dn
+            else
+                COS_MONIKER=cosv2-s-ue1-ds
+                APP_SUFFIX=-s-ue1
+            fi
+            ;;
+
         prod )
             VAULT_ADDR=https://civ1.pr.adskengineer.net:8200
-            COS_MONIKER=cosv2-p-ue1-ds
-            APP_SUFFIX=-p-ue1;;
-        dns )
-            VAULT_ADDR=https://civ1.st.adskengineer.net:8200
-            COS_MONIKER=cosv2-s-ue1-dn
-            APP_SUFFIX=-s-ue1-dn;;
-        dn )
-            VAULT_ADDR=https://civ1.pr.adskengineer.net:8200
-            COS_MONIKER=cosv2-p-ue1-dn
-            APP_SUFFIX=-p-ue1-dn;;
+
+            if [[ "$2" == "dn" ]]; then
+                COS_MONIKER=cosv2-p-ue1-dn
+                APP_SUFFIX=-p-ue1-dn
+            else
+                COS_MONIKER=cosv2-p-ue1-ds
+                APP_SUFFIX=-p-ue1
+            fi
+            ;;
         *)
-            echo "ERROR: Invalid environment, must be one of (dev|stg|prod|ds|dns)"
+            echo "ERROR: Invalid environment, must be one of (dev|stg|prod)";;
     esac
+
+    # update default app moniker
+    APP_MONIKER=$APP_DEFAULT$APP_SUFFIX
+
+    echo "-------------------------------------------------------------------------------"
+    echo "  Vault environment is setup ready."
+    echo ""
+    echo "      VAULT_ADDR:                 $VAULT_ADDR"
+    echo "      VAULT USER  (default):      $USER_DEFAULT"
+    echo "      COS_MONIKER:                $COS_MONIKER"
+    echo "      APP_MONIKER (default):      $APP_MONIKER"
 }
 
 function update_app_moniker() {
@@ -73,7 +92,7 @@ function vr() {
         TYPE=app
     fi
 
-    vault read $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets
+    (set -x; vault read $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets)
 }
 
 function vr-app() {
@@ -98,7 +117,7 @@ function vw() {
         fi
 
         update_app_moniker "$1"
-        vault write $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets @"$SECRET_FILE"
+        set -x; vault write $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets @"$SECRET_FILE"
     fi
 }
 
