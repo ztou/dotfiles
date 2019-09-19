@@ -1,10 +1,10 @@
 #                   vault
 # --------------------------------------------------
-# json or table
 USER_DEFAULT=huangjoh
 APP_DEFAULT=iwwsa
 APP_SUFFIX=-c-uw2
 
+# json or table
 export VAULT_FORMAT=json
 export VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
 
@@ -137,11 +137,16 @@ function vw-test() {
 #
 # cmd='vault write cosv2-c-uw2/iwwsa-c-uw2/aws/sts/app ttl=12h'
 #
-function kk() {
+function tk() {
     update_app_moniker "$@"
 
-    if [ -z "$TM_PY" ]; then
-        TM_PY=~/dotfiles/sb/vault-utils/tm.py
+    if [ -z "$TK_PY" ]; then
+        TK_PY=~/dotfiles/sb/vault-utils/tk.py
     fi
-    python "$TM_PY" -app $APP_MONIKER
+    python "$TK_PY" -cos $COS_MONIKER -app $APP_MONIKER
+}
+
+function vk() {
+    update_app_moniker "$@"
+    (set -x; vault write $COS_MONIKER/$APP_MONIKER/aws/sts/app ttl=12h)
 }
