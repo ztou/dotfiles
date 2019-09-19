@@ -1,14 +1,13 @@
 #                   vault
 # --------------------------------------------------
 # json or table
-export APP_DEFAULT=iwwsa
-export USER_DEFAULT=huangjoh
+USER_DEFAULT=huangjoh
+APP_DEFAULT=iwwsa
+APP_SUFFIX=-c-uw2
 
 export VAULT_FORMAT=json
 export VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
 
-export APP_ENV=dev
-export APP_SUFFIX=-c-uw2
 export APP_MONIKER=$APP_DEFAULT$APP_SUFFIX
 export COS_MONIKER=cosv2-c-uw2
 
@@ -18,15 +17,15 @@ alias vw-dev='vault write -format=json account/849563745824/sts/Resource-Admin -
 # Init vault environment
 #
 function ve() {
-    APP_ENV=$1
-    if [ -z "$APP_ENV" ]; then
-        APP_ENV=dev
-    fi
-    case $APP_ENV in
+
+    # default env: dev
+    env=${1:-dev}
+    case $env in
         dev )
             VAULT_ADDR=https://civ1.dv.adskengineer.net:8200
             COS_MONIKER=cosv2-c-uw2
-            APP_SUFFIX=-c-uw2;;
+            APP_SUFFIX=-c-uw2
+            ;;
 
         stg )
             VAULT_ADDR=https://civ1.st.adskengineer.net:8200
@@ -51,15 +50,27 @@ function ve() {
                 APP_SUFFIX=-p-ue1
             fi
             ;;
+
+        show )
+            show_vault_environment
+            return
+            ;;
+
         *)
-            echo "ERROR: Invalid environment, must be one of (dev|stg|prod)";;
+            echo "ERROR: invalid input, must be one of (dev|stg|prod [dn] or show)"
+            return
+            ;;
     esac
 
     # update default app moniker
     APP_MONIKER=$APP_DEFAULT$APP_SUFFIX
 
-    echo "-------------------------------------------------------------------------------"
-    echo "  Vault environment is setup ready."
+    show_vault_environment
+}
+
+function show_vault_environment() {
+    echo "-----------------------------------------------------------------------"
+    echo "  Vault environment is setup ready:"
     echo ""
     echo "      VAULT_ADDR:                 $VAULT_ADDR"
     echo "      VAULT USER  (default):      $USER_DEFAULT"
@@ -68,10 +79,7 @@ function ve() {
 }
 
 function update_app_moniker() {
-    m=$1
-    if [ -z "$1" ]; then
-        m=$APP_DEFAULT
-    fi
+    m=${1:-$APP_DEFAULT}
 
     # check if it contains '-', if so, it is a full moniker
     if [[ "$m" == *"-"* ]]; then
@@ -87,11 +95,7 @@ function update_app_moniker() {
 function vr() {
     update_app_moniker "$1"
 
-    TYPE=$2
-    if [ -z "$TYPE" ]; then
-        TYPE=app
-    fi
-
+    TYPE=${2:-app}
     (set -x; vault read $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets)
 }
 
@@ -117,7 +121,7 @@ function vw() {
         fi
 
         update_app_moniker "$1"
-        set -x; vault write $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets @"$SECRET_FILE"
+        (set -x; vault write $COS_MONIKER/$APP_MONIKER/generic/${TYPE}Secrets @"$SECRET_FILE")
     fi
 }
 
