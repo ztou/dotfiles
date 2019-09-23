@@ -75,5 +75,8 @@ alias yi='yapf --recursive -i --style $YAPF_STYLE'
 #
 # other major alias
 # --------------------------------------------------
-source ~/dotfiles/sb/vault-utils/.alias-vault.bash
-source ~/dotfiles/.alias-git.bash
+DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pwd )"
+
+source $DOTFILES/sb/vault-utils/.alias-vault.bash
+source $DOTFILES/.alias-git.bash
+source $DOTFILES/.priv.bash

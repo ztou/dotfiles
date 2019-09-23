@@ -1,12 +1,14 @@
 #!/bin/zsh
 
+DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pwd )"
+
 export TERM=xterm-256color
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/Johnny/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -72,7 +74,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv virtualenv status root_indicator backg
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-export FZF_BASE=/Users/Johnny/dotfiles/sb/fzf
+export FZF_BASE=$DOTFILES/sb/fzf
 plugins=(
   git
   z
