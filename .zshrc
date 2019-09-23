@@ -1,7 +1,5 @@
 #!/bin/zsh
 
-DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pwd )"
-
 export TERM=xterm-256color
 
 # If you come from bash you might have to change your $PATH.
@@ -74,7 +72,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv virtualenv status root_indicator backg
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-export FZF_BASE=$DOTFILES/sb/fzf
+export FZF_BASE=~/dotfiles/sb/fzf
 plugins=(
   git
   z
