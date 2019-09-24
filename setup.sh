@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pwd )"
 
 # by default ln -s will create copy
 # https://github.com/git-for-windows/git/pull/156
@@ -18,7 +18,7 @@ function backup_link() {
 function create_link() {
     full_link=$1
     name=$(basename "$full_link")
-    source_link=~/dotfiles/$name
+    source_link=$DOTFILES/$name
 
     if [ -f "$source_link" ]; then
         if ln -s "$source_link" "$full_link"
@@ -48,8 +48,6 @@ fi
 
 backup_link ~/.alias.bash
 create_link ~/.alias.bash
-backup_link ~/.priv.bash
-create_link ~/.priv.bash
 backup_link ~/.bashrc
 create_link ~/.bashrc
 
@@ -65,9 +63,10 @@ create_link ~/.fzfrc.bash
 backup_link ~/.zshrc
 create_link ~/.zshrc
 
-echo "installing fzf"
 git submodule update --init --recursive
-"$CURRENT_DIR/sb/fzf/install" --key-bindings --completion --update-rc
+
+echo "installing fzf"
+"$DOTFILES/sb/fzf/install" --key-bindings --completion --update-rc
 
 
 # plugins
@@ -93,4 +92,3 @@ esac
 echo "--------------------------------------------------"
 echo "      ~/dotfiles are installed successfully"
 echo "--------------------------------------------------"
-

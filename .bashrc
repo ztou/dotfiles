@@ -1,7 +1,8 @@
 #!/bin/bash
 
-#DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
-DOTFILES=~/dotfiles
+# readlink - readlink symbol link location
+#
+DOTFILES="$( cd "$( dirname "$(readlink ${BASH_SOURCE[0]:-$0:A})" )" >/dev/null && pwd )"
 
 # from - https://conemu.github.io/en/CygwinMsys.html#bash-history
 
@@ -22,7 +23,6 @@ function source_bash() {
 }
 
 source_bash $DOTFILES/.alias.bash
-source_bash $DOTFILES/.priv.bash
 source_bash $DOTFILES/sb/z/z.sh
 source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
 
@@ -43,9 +43,9 @@ case "$(uname -s)" in
     *)
 esac
 
-__git_complete ga _git_add
-__git_complete gb _git_branch
-__git_complete gco _git_checkout
+#__git_complete ga _git_add
+#__git_complete gb _git_branch
+#__git_complete gco _git_checkout
 
 
 #                   fzf
