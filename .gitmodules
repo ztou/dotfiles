@@ -1,9 +1,6 @@
 [submodule "sb/z"]
 	path = sb/z
 	url = https://github.com/rupa/z.git
-[submodule "sb/git-flow-completion"]
-	path = sb/git-flow-completion
-	url = https://github.com/bobthecow/git-flow-completion.git
 [submodule "sb/fzf"]
 	path = sb/fzf
 	url = https://github.com/junegunn/fzf.git
