@@ -31,6 +31,7 @@ alias pir='pip install -r requirements.txt'
 alias pidev='pip install -e .[dev]'
 alias pei='pipenv install'
 alias va='pre-commit run --all-files'
+alias papp='python app.py'
 
 alias pbuild='python setup.py sdist bdist_wheel --universal'
 alias pupload='python setup.py upload'
@@ -57,7 +58,6 @@ function venv() {
 
 alias cv='cvenv'
 alias sv='svenv'
-alias vv='venv'
 
 #                   docker
 # --------------------------------------------------

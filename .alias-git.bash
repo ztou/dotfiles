@@ -34,6 +34,7 @@ alias gc='git commit'
 alias gr='git remote'
 alias gco='git checkout'
 alias grh='git reset HEAD'
+alias grr='git reset origin/$(gcb)'
 
 alias gd='git diff'
 alias gds='git diff --submodule=diff'
