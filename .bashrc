@@ -43,9 +43,9 @@ case "$(uname -s)" in
     *)
 esac
 
-#__git_complete ga _git_add
-#__git_complete gb _git_branch
-#__git_complete gco _git_checkout
+__git_complete ga _git_add
+__git_complete gb _git_branch
+__git_complete gco _git_checkout
 
 
 #                   fzf
