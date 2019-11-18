@@ -118,6 +118,9 @@ alias reload='source ~/.zshrc'
 source ~/.fzfrc.bash
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# start ssh-agent
+source ~/dotfiles/.ssh-agent.bash
+
 #https://github.com/github/hub/tree/master/etc
 eval "$(hub alias -s)"
 
