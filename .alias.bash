@@ -71,6 +71,10 @@ alias dre='docker run -it --env-file ${ENV_FILE}'
 # --------------------------------------------------
 alias yi='yapf --recursive -i --style $YAPF_STYLE'
 
+#                  vault ssh
+# --------------------------------------------------
+alias v-prod='vault ssh -mount-point=ssh/IW-P-UE1 -role otp_key_role -strict-host-key-checking=no -user-known-hosts-file=/dev/null ec2-user@10.194.114.167'
+alias v-stg='vault ssh -mount-point=ssh/IW-S-UE1 -role otp_key_role -strict-host-key-checking=no -user-known-hosts-file=/dev/null ec2-user@10.195.78.171'
 
 #
 # other major alias

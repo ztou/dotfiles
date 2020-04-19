@@ -124,7 +124,5 @@ source ~/dotfiles/.ssh-agent.bash
 #https://github.com/github/hub/tree/master/etc
 eval "$(hub alias -s)"
 
-export PIPENV_VENV_IN_PROJECT=1
-
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
