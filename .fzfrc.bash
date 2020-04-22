@@ -88,7 +88,12 @@ fco() {
     (echo "$branches"; echo "$tags") |
     fzf --no-hscroll --no-multi -n 2 \
         --ansi) || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+
+  # sample: branch  origin/master
+  branch=$(awk '{print $2}' <<<"$target" )
+
+  #strip the git remote: origin/
+  git checkout ${branch//origin\//}
 }
 
 # fco_preview - checkout git branch/tag, with a preview showing the commits between the tag/branch and HEAD
@@ -104,5 +109,10 @@ fco_preview() {
     (echo "$branches"; echo "$tags") |
     fzf --no-hscroll --no-multi -n 2 \
         --ansi --preview="git --no-pager log -150 --pretty=format:%s '..{2}'") || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+
+  # sample: branch  origin/master
+  branch=$(awk '{print $2}' <<<"$target" )
+
+  #strip the git remote: origin/
+  git checkout ${branch//origin\//}
 }
