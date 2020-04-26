@@ -26,16 +26,26 @@ export FZF_CTRL_R_OPTS='--preview "echo {}" --preview-window down:3:hidden:wrap'
 export FZF_ALT_C_COMMAND='fd --type d'
 export FZF_ALT_C_OPTS='--bind "F3:toggle-preview" --preview "tree -L 2 -C {} | head -200"'
 
+# print recent dir
 unalias j 2> /dev/null
 j() {
-  [ $# -gt 0  ] && _z "$*" && return
+  # [ $# -gt 0  ] && _z -e "$*" && return
+  [ "$1" ] && _z -e "$*" && return
   _z -l 2>&1 | fzf --no-height --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//'
 }
 
+# cd recent dir
 unalias z 2> /dev/null
 z() {
-  [ $# -gt 0  ] && _z "$*" && return
-  cd $(j)
+  dir=$(j "$*")
+  [ "$dir" ] && cd "$dir"
+}
+
+# code recent dir
+unalias fe 2> /dev/null
+e() {
+  dir=$(j "$*")
+  [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
 
 # https://github.com/junegunn/fzf/wiki/Examples
