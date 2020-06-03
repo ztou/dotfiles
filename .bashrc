@@ -50,9 +50,13 @@ __git_complete gco _git_checkout
 
 #                   fzf
 # --------------------------------------------------
+# https://github.com/junegunn/fzf/issues/963
+#
+export TERM="cygwin"
 source_bash $DOTFILES/.fzfrc.bash
 source_bash ~/.fzf.bash
 source_bash $DOTFILES/fzf-git.bash
+
 
 # ssh-agent
 source_bash $DOTFILES/.ssh-agent.bash
