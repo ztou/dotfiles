@@ -5,6 +5,9 @@
 v_path='Scripts/activate'
 alias open='explorer'
 alias cc='cmd //c'
+alias ce='code ~/.env'
+alias ev="cat ~/.env && export $(grep -v '^#' ~/.env | xargs -d '\n')"
+alias uev="cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | xargs)"
 
 if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
     v_path='bin/activate'
