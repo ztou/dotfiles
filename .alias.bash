@@ -23,6 +23,10 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias td='tree -d -L 2'
 alias t='tree -L 2'
+alias xx='cd /m/x-hub'
+
+alias so='scoop'
+alias nv='nvim'
 
 #                   python
 # --------------------------------------------------

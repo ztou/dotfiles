@@ -44,7 +44,7 @@ z() {
 
 # open recent dir with code
 #
-zo() {
+c() {
   dir=$(j "$*")
   [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
