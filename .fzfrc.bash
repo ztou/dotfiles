@@ -49,11 +49,23 @@ c() {
   [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
 
+#
+_g() {
+  dir=$(fd --type d "$*" | fzf --preview "tree -L 2 -C {} | head -200")
+  echo "$dir"
+}
+
+# goto dir
+#
+g() {
+  dir=$(_g)
+  [ "$dir" ] && cd "$dir"
+}
 
 # open dir with code
 #
 o() {
-  dir=$(fd --type d "$*" | fzf --preview "tree -L 2 -C {} | head -200")
+  dir=$(_g)
   [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
 
