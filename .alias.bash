@@ -28,6 +28,16 @@ alias xx='cd /m/x-hub'
 alias so='scoop'
 alias nv='nvim'
 
+run() {
+    n=${1:-5}
+    cmd=${@:2}
+    for i in $(seq $n); do
+        echo "====================> $i"
+        echo "start running: $cmd"
+        $cmd || break
+    done
+}
+
 #                   python
 # --------------------------------------------------
 alias penv='source $(pipenv --venv)/$v_path'
@@ -73,7 +83,6 @@ alias dp='docker ps'
 alias dr='docker run -it'
 alias dre='docker run -it --env-file ${ENV_FILE}'
 
-
 #                   yapf
 # --------------------------------------------------
 alias yi='yapf --recursive -i --style $YAPF_STYLE'
@@ -86,7 +95,7 @@ alias v-stg='vault ssh -mount-point=ssh/IW-S-UE1 -role otp_key_role -strict-host
 #
 # other major alias
 # --------------------------------------------------
-DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pwd )"
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]:-$0:A}")" >/dev/null && pwd)"
 
 source $DOTFILES/sb/vault-utils/.alias-vault.bash
 source $DOTFILES/.alias-git.bash
