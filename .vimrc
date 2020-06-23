@@ -12,7 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 " ----- Making Vim look good ------------------------------------------
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -49,6 +49,15 @@ if has('clipboard')
 	set clipboard=unnamed
     endif
 endif
+
+"When included, Vim will use the clipboard register '*' for all yank, delete, change and put operations which
+"set clipboard+=unnamed
+nmap <C-c> :let @* = expand("%:p")<CR>
+
+"Copy paste to/from clipboard
+vnoremap <C-c> "*y
+vnoremap <C-v> "*p
+
 
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
@@ -106,8 +115,6 @@ set autoread                    " Reload files changed outside vim
 " Trigger autoread when changing buffers or coming back to vim in terminal.
 "au FocusGained,BufEnter * :silent! !
 
-"Copy paste to/from clipboard
-vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 " ----- Plugin-Specific Settings --------------------------------------
@@ -225,11 +232,6 @@ map <Leader>j <Esc>:set filetype=json<CR>:%!python -m json.tool<CR>
 
 nmap <Leader>f =a{<CR>
 
-"When included, Vim will use the clipboard register '*' for all yank, delete, change and put operations which
-"set clipboard+=unnamed
-nmap <C-c> :let @* = expand("%:p")<CR>
-
-vnoremap <C-c> "*y
 nmap <C-q> :wq!<CR>
 nmap <A-q> :q!<CR>
 
