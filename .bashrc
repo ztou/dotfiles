@@ -8,6 +8,7 @@ DOTFILES="$( cd "$( dirname "$(readlink ${BASH_SOURCE[0]:-$0:A})" )" >/dev/null 
 
 # ignore duplicate
 HISTCONTROL=ignoreboth:erasedups
+HISTSIZE=5000
 
 # Allow "sharing" of history between instances
 PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
@@ -52,7 +53,12 @@ __git_complete gco _git_checkout
 # --------------------------------------------------
 # https://github.com/junegunn/fzf/issues/963
 #
-export TERM="cygwin"
+export TERM=cygwin
+# export TERM=xterm-256color
+# export TERM=xterm-color
+# export TERM=xterm
+# export TERM=
+
 source_bash $DOTFILES/.fzfrc.bash
 source_bash ~/.fzf.bash
 source_bash $DOTFILES/fzf-git.bash

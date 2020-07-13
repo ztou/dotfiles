@@ -20,7 +20,7 @@ export FZF_CTRL_T_OPTS='--bind "F3:toggle-preview" --preview "bat --style=number
 
 # show long commands if needed
 # export FZF_CTRL_R_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_CTRL_R_OPTS='--preview "echo {}" --preview-window down:3:hidden:wrap'
+# export FZF_CTRL_R_OPTS='--preview "echo {}" --preview-window down:3:hidden:wrap'
 
 # download tree from http://downloads.sourceforge.net/gnuwin32/tree-1.5.2.2-bin.zip
 export FZF_ALT_C_COMMAND='fd --type d'
@@ -86,7 +86,7 @@ e() {
 # fuzzy grep via ag, open with code (ctrl-o) or vim
 #
 f() {
-  out=`ag --nocolor "$1" | fzf --exit-0 --expect=ctrl-o`
+  out=`ag --nocolor $* | fzf --exit-0 --expect=ctrl-o`
   key=$(head -1 <<< "$out")
 
   line=$(head -2 <<< "$out" | tail -1)
