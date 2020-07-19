@@ -57,15 +57,16 @@ _g() {
 
 # goto dir
 #
+unalias g 2> /dev/null
 g() {
-  dir=$(_g)
+  dir=$(_g "$*")
   [ "$dir" ] && cd "$dir"
 }
 
 # open dir with code
 #
 o() {
-  dir=$(_g)
+  dir=$(_g "$*")
   [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
 
@@ -106,7 +107,7 @@ fag(){
     && vim $(cut -d':' -f1 <<< "$line") +$(cut -d':' -f2 <<< "$line")
 }
 
-# cd into dir repeatedly 
+# cd into dir repeatedly
 #
 cd() {
     if [[ "$#" != 0 ]]; then
