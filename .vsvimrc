@@ -5,10 +5,10 @@ set expandtab
 set nu
 set incsearch
 set hlsearch
-set formatoptions=ntql
+"set formatoptions=ntql
 set cursorline
 set smartcase
-set complete=.,w,b,u
+"set complete=.,w,b,u
 set backspace=indent,eol,start
 
 " VAssistX.VaSnippetInsert
