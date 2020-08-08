@@ -2,7 +2,7 @@
 
 #                   Windows specific
 # --------------------------------------------------
-v_path='Scripts/activate'
+v_activate='Scripts/activate'
 alias open='explorer'
 alias cc='cmd //c'
 alias ce='code ~/.env'
@@ -12,7 +12,7 @@ if [ -f "~/.env" ]; then
 fi
 
 if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
-    v_path='bin/activate'
+    v_activate='bin/activate'
     unalias open
     unalias cc
 fi
@@ -40,9 +40,16 @@ run() {
     done
 }
 
+#https://stackoverflow.com/questions/19345872/how-to-remove-a-newline-from-a-string-in-bash
+venvf() {
+    v_path=$(pipenv --venv)
+    v_path=${v_path//[$'\t\r\n ']}
+    source "$v_path/$v_activate"
+}
+
 #                   python
 # --------------------------------------------------
-alias penv='source $(pipenv --venv)/$v_path'
+alias venv='source ".venv/$v_activate"'
 alias plr='pipenv lock -r'
 
 alias pi='pip install'
@@ -68,10 +75,10 @@ function svenv() {
     if [ -z "$v" ]; then
         v=.venv
     fi
-    source $v/$v_path
+    source $v/$v_activate
 }
 
-function venv() {
+function vv() {
     cvenv "$@" && svenv "$@"
 }
 
