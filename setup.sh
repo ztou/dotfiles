@@ -66,7 +66,7 @@ create_link ~/.zshrc
 git submodule update --init --recursive
 
 echo "installing fzf"
-"$DOTFILES/sb/fzf/install" --key-bindings --completion --update-rc
+"$DOTFILES/sb/fzf/install" --key-bindings --no-completion --update-rc
 
 
 # plugins
