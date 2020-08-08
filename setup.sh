@@ -6,6 +6,15 @@ export DOTFILES="$( cd "$( dirname "${BASH_SOURCE[0]:-$0:A}" )" >/dev/null && pw
 # https://github.com/git-for-windows/git/pull/156
 export MSYS=winsymlinks:nativestrict
 
+
+function test_app() {
+    type $1 >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        echo "Can not find $1, please install $1 first."
+        exit 1
+    fi
+}
+
 function backup_link() {
     full_link=$1
     old_link=$full_link.old
@@ -63,31 +72,33 @@ create_link ~/.fzfrc.bash
 backup_link ~/.zshrc
 create_link ~/.zshrc
 
+echo "init submodules..."
 git submodule update --init --recursive
 
-echo "installing fzf"
+echo "installing fzf..."
 "$DOTFILES/sb/fzf/install" --key-bindings --no-completion --update-rc
 
+echo "trying to install utils tools..."
+case "$(uname -s)" in
+    Linux*)
+        sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
 
-# plugins
-# brew install thefuck
+    Darwin*)
+        test_app brew
+        brew install jq bash-completion thefuck pyenv pyenv-virtualenv;;
+
+    MINGW64*)
+        test_app scoop
+        scoop install 7zip ag bat curl dig fd jq less which;;
+    *)
+esac
+
+# plugins for zsh
 if [ -d ~/.oh-my-zsh ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
     git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
 fi
-
-#                   git auto completion
-# --------------------------------------------------
-case "$(uname -s)" in
-    Linux*)     sudo curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o /etc/bash_completion.d/git-completion.bash;;
-
-    Darwin*)    brew install jq bash-completion hub thefuck pyenv pyenv-virtualenv;;
-
-    # Windows - C:\Program Files\Git\mingw64\share\git\completion\git-completion.bash
-    *)
-esac
-
 
 echo "--------------------------------------------------"
 echo "      ~/dotfiles are installed successfully"
