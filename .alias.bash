@@ -41,7 +41,7 @@ run() {
 }
 
 #https://stackoverflow.com/questions/19345872/how-to-remove-a-newline-from-a-string-in-bash
-venvf() {
+penvf() {
     v_path=$(pipenv --venv)
     v_path=${v_path//[$'\t\r\n ']}
     source "$v_path/$v_activate"
@@ -49,7 +49,7 @@ venvf() {
 
 #                   python
 # --------------------------------------------------
-alias venv='source ".venv/$v_activate"'
+alias penv='source ".venv/$v_activate"'
 alias plr='pipenv lock -r'
 
 alias pi='pip install'
@@ -78,7 +78,7 @@ function svenv() {
     source $v/$v_activate
 }
 
-function vv() {
+function venv() {
     cvenv "$@" && svenv "$@"
 }
 
