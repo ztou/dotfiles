@@ -9,4 +9,4 @@
 	url = https://github.com/github/hub
 [submodule "sb/vault-utils"]
 	path = sb/vault-utils
-	url = https://git.autodesk.com/huangjoh/vault-utils
+	url = ../../huangjoh/vault-utils
