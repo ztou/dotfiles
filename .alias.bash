@@ -32,11 +32,12 @@ alias nv='nvim'
 
 run() {
     n=${1:-5}
-    cmd=${@:2}
+    cmd=$2
+    arg=${@:3}
     for i in $(seq $n); do
         echo "====================> $i"
         echo "start running: $cmd"
-        $cmd || break
+        ${cmd} $arg || break
     done
 }
 
