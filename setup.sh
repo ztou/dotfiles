@@ -66,6 +66,7 @@ create_link ~/.vsvimrc
 create_link ~/.xvimrc
 create_link ~/.tmux.conf
 create_link ~/.isort.cfg
+create_link ~/.clang-format
 
 # zsh - move this up, since fzf will create the .zshrc/.bashrc file
 create_link ~/.fzfrc.bash
@@ -85,7 +86,7 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install jq bash-completion thefuck pyenv pyenv-virtualenv;;
+        brew install jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree;;
 
     MINGW64*)
         test_app scoop
