@@ -57,6 +57,8 @@ fi
 
 backup_link ~/.alias.bash
 create_link ~/.alias.bash
+backup_link ~/.alias-jenkins.bash
+create_link ~/.alias-jenkins.bash
 backup_link ~/.bashrc
 create_link ~/.bashrc
 

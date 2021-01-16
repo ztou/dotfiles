@@ -109,4 +109,5 @@ DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]:-$0:A}")" >/dev/null && pwd)"
 
 source $DOTFILES/sb/vault-utils/.alias-vault.bash
 source $DOTFILES/.alias-git.bash
+source $DOTFILES/.alias-jenkins.bash
 source $DOTFILES/.priv.bash
