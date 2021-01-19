@@ -1,3 +1,5 @@
 .vscode/
 .priv.bash
 tmp
+
+.DS_Store

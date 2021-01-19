@@ -28,7 +28,7 @@ alias gau='git add -u'
 alias gac='git add -u . && git commit'
 alias gaca='git add -u . && git commit --amend'
 alias gca='git commit --amend'
-alias gcm='git commit -m'
+#alias gcm='git commit -m'
 alias gb='git branch'
 alias gc='git commit'
 alias gr='git remote'
@@ -38,9 +38,9 @@ alias grr='git reset origin/$(gcb)'
 
 alias gd='git diff'
 alias gds='git diff --submodule=diff'
-alias gdt='git difftool --submodule=diff --no-prompt --tool=am'
+alias gdt='git difftool --submodule=diff --no-prompt'
 alias gdc='git diff --submodule=diff --cached'
-alias gdct='git difftool --submodule=diff --cached --no-prompt --tool=am'
+alias gdct='git difftool --submodule=diff --cached --no-prompt'
 alias gst='git status'
 alias gsps='git show --pretty=short --show-signature'
 
@@ -78,6 +78,8 @@ alias gcom='git fetch origin master:refs/remotes/origin/master && git checkout o
 
 alias grom='git rebase origin/master'
 alias grm='git rebase master'
+alias gcn='git commit --amend --no-edit'
+alias gpr='gcn && gpf'
 
 alias egvim='export GIT_EDITOR=gvim'
 alias evim='export GIT_EDITOR=vim'
@@ -91,3 +93,11 @@ alias hb='hub browse'
 alias hp='hub pull-request'
 alias hpr='gp && hp -o'
 alias publish='gp && hp -o'
+
+
+#   git flow
+# --------------------------------------------------
+alias gffs='git flow feature start'
+alias gfd='git fetch origin develop:develop'
+alias gcd='git fetch origin develop:develop && git checkout develop'
+alias gcod='git fetch origin develop:refs/remotes/origin/develop && git checkout origin/develop'

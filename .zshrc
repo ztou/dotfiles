@@ -126,3 +126,7 @@ eval "$(hub alias -s)"
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
+
+# eval "$(starship init zsh)"

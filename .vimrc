@@ -72,7 +72,7 @@ else
   set guifont=Menlo\ Regular\ for\ Powerline:h11
   "set guifont=Source_Code_Pro_for_Powerline:h13
 endif
-set guifont=Fira\ Code\ Retina:h13
+set guifont=Fira\ Code\ Retina:h14
 
 set backspace=indent,eol,start
 set ruler

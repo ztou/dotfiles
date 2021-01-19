@@ -6,10 +6,10 @@ v_activate='Scripts/activate'
 alias open='explorer'
 alias cc='cmd //c'
 alias ce='code ~/.env'
-if [ -f "~/.env" ]; then
-    alias ev="cat ~/.env && export $(grep -v '^#' ~/.env | xargs -d '\n')"
-    alias uev="cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | xargs)"
-fi
+# if [ -f "~/.env" ]; then
+#     alias ev="cat ~/.env && export $(grep -v '^#' ~/.env | xargs -d '\n')"
+#     alias uev="cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | xargs)"
+# fi
 
 if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
     v_activate='bin/activate'
@@ -111,3 +111,10 @@ source $DOTFILES/sb/vault-utils/.alias-vault.bash
 source $DOTFILES/.alias-git.bash
 source $DOTFILES/.alias-jenkins.bash
 source $DOTFILES/.priv.bash
+
+function gdd() {
+    #!/bin/sh
+    git diff --name-only "$@" | while read filename; do
+        git difftool "$@" --no-prompt "$filename" &
+    done
+}

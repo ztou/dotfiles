@@ -59,6 +59,8 @@ backup_link ~/.alias.bash
 create_link ~/.alias.bash
 backup_link ~/.alias-jenkins.bash
 create_link ~/.alias-jenkins.bash
+backup_link ~/.bash_profile
+create_link ~/.bash_profile
 backup_link ~/.bashrc
 create_link ~/.bashrc
 
@@ -72,6 +74,8 @@ create_link ~/.clang-format
 
 # zsh - move this up, since fzf will create the .zshrc/.bashrc file
 create_link ~/.fzfrc.bash
+backup_link ~/.zshenv
+create_link ~/.zshenv
 backup_link ~/.zshrc
 create_link ~/.zshrc
 
