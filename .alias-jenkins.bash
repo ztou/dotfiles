@@ -1,4 +1,10 @@
+declare -A jenkins_job
+jenkins_job[infraworks-desktop]="https://master-3.jenkins.autodesk.com/job/BCG/job/IW"
 
+declare -A org_map
+org_map[civil-infrastructure]="Civil-Infrastructure"
+org_map[civil3d]="Civil"
+org_map[infraworks]="InfraWorks"
 
 function jo() {
 
@@ -13,7 +19,6 @@ function jo() {
 
     # https
     org_repo=${org_repo#*com/}
-    echo $org_repo
     # org=${org_repo%/*}
 
     org=$(echo "$org_repo" | cut -d'/' -f 1)
@@ -22,18 +27,25 @@ function jo() {
     repo=$(basename $(git rev-parse --show-toplevel))
     # echo $repo
 
-    jenkins_org=$org
-    if [[ "${org}" == "civil-infrastructure"  ]]; then
-        jenkins_org=Civil-Infrastructure
-    elif [[ "${org}" == "Civil3D"  ]]; then
-        jenkins_org=Civil
+    # check repo has customized jenkins job url
+    lower_repo=$(echo "$repo" | tr '[:upper:]' '[:lower:]')
+    jenkins_url=${jenkins_job[$lower_repo]}
+
+    if [ -z "$jenkins_url" ]; then
+
+        lower_org=$(echo "$org" | tr '[:upper:]' '[:lower:]')
+        jenkins_org=${org_map[$lower_org]}
+
+        # check repo has cutomized jenkins org/folder
+        if [ -z "$jenkins_org" ]; then
+            jenkins_org=$org
+        fi
+
+        # generate jenkins url with org + repo name
+        jenkins_host=https://master-3.jenkins.autodesk.com/job/BCG/job/$jenkins_org
+        jenkins_url=$jenkins_host/job/$repo
     fi
 
-    jenkins_host=https://master-3.jenkins.autodesk.com/job/BCG/job/$jenkins_org
-
-    # https://master-3.jenkins.autodesk.com/job/BCG/job/Civil-Infrastructure/job/drainage-engine/
-    jenkins_url=$jenkins_host/job/$repo
     echo opening jenkins job link: $jenkins_url
     open $jenkins_url
-
 }
