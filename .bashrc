@@ -66,3 +66,12 @@ source_bash $DOTFILES/fzf-git.bash
 
 # ssh-agent
 source_bash $DOTFILES/.ssh-agent.bash
+
+
+# key binding
+bind '"\er": redraw-current-line'
+bind '"\C-g\C-f": "$(f_gf)\e\C-e\er"'
+bind '"\C-g\C-b": "$(f_gb)\e\C-e\er"'
+bind '"\C-g\C-t": "$(f_gt)\e\C-e\er"'
+bind '"\C-g\C-h": "$(f_gh)\e\C-e\er"'
+bind '"\C-g\C-r": "$(f_gr)\e\C-e\er"'

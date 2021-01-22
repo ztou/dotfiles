@@ -49,10 +49,3 @@ f_gr() {
     --preview 'git log --oneline --graph --date=short --pretty="format:%C(auto)%cd %h%d %s" {1} | head -200' |
   cut -d$'\t' -f1
 }
-
-bind '"\er": redraw-current-line'
-bind '"\C-g\C-f": "$(f_gf)\e\C-e\er"'
-bind '"\C-g\C-b": "$(f_gb)\e\C-e\er"'
-bind '"\C-g\C-t": "$(f_gt)\e\C-e\er"'
-bind '"\C-g\C-h": "$(f_gh)\e\C-e\er"'
-bind '"\C-g\C-r": "$(f_gr)\e\C-e\er"'

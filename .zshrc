@@ -118,6 +118,8 @@ alias reload='source ~/.zshrc'
 source ~/.fzfrc.bash
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source ~/dotfiles/fzf-git.bash
+
 # start ssh-agent
 source ~/dotfiles/.ssh-agent.bash
 
@@ -130,3 +132,8 @@ eval "$(pyenv virtualenv-init -)"
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
 # eval "$(starship init zsh)"
+
+
+# key binding
+zle -N f_gh
+bindkey '^h' f_gh
