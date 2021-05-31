@@ -8,3 +8,4 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 
 export TM_PY='c:/dropbox/code/python/token-make/tm.py'
 export BAT_THEME="OneHalfDark"
+source "$HOME/.cargo/env"

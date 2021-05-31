@@ -1,6 +1,14 @@
+# map github repo to specific jenkins job
+# e.g:
+#      repo ---> job
+#
 declare -A jenkins_job
 jenkins_job[infraworks-desktop]="https://master-3.jenkins.autodesk.com/job/BCG/job/IW"
 
+# map github org to jenkins foler
+# e.g:
+#      org ---> folder
+#
 declare -A org_map
 org_map[civil-infrastructure]="Civil-Infrastructure"
 org_map[civil3d]="Civil"
@@ -46,6 +54,6 @@ function jo() {
         jenkins_url=$jenkins_host/job/$repo
     fi
 
-    echo opening jenkins job link: $jenkins_url
+    echo opening jenkins job: $jenkins_url
     open $jenkins_url
 }

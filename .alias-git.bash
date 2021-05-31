@@ -83,6 +83,7 @@ alias gpr='gcn && gpf'
 
 alias egvim='export GIT_EDITOR=gvim'
 alias evim='export GIT_EDITOR=vim'
+alias ecode='export GIT_EDITOR="code -w"'
 
 #                   hub
 # --------------------------------------------------
@@ -101,3 +102,4 @@ alias gffs='git flow feature start'
 alias gfd='git fetch origin develop:develop'
 alias gcd='git fetch origin develop:develop && git checkout develop'
 alias gcod='git fetch origin develop:refs/remotes/origin/develop && git checkout origin/develop'
+

@@ -3,19 +3,25 @@
 #                   Windows specific
 # --------------------------------------------------
 v_activate='Scripts/activate'
+v_ending='\r\n'
 alias open='explorer'
 alias cc='cmd //c'
 alias ce='code ~/.env'
-# if [ -f "~/.env" ]; then
-#     alias ev="cat ~/.env && export $(grep -v '^#' ~/.env | xargs -d '\n')"
-#     alias uev="cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | xargs)"
-# fi
 
 if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
     v_activate='bin/activate'
+    v_ending='\n'
     unalias open
     unalias cc
 fi
+
+function ex() {
+    cat ~/.env && export $(grep -v '^#' ~/.env | tr $v_ending ' ')
+}
+
+function uex() {
+    cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | tr $v_ending ' ')
+}
 
 #                   general
 # --------------------------------------------------
@@ -44,7 +50,7 @@ run() {
 #https://stackoverflow.com/questions/19345872/how-to-remove-a-newline-from-a-string-in-bash
 penvf() {
     v_path=$(pipenv --venv)
-    v_path=${v_path//[$'\t\r\n ']}
+    v_path=${v_path//[$'\t\r\n ']/}
     source "$v_path/$v_activate"
 }
 
