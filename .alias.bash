@@ -36,6 +36,9 @@ alias xx='cd /m/x-hub'
 alias so='scoop'
 alias nv='nvim'
 
+alias pc='pbcopy'
+alias pp='pbpaste'
+
 run() {
     n=${1:-5}
     cmd=$2
@@ -123,4 +126,23 @@ function gdd() {
     git diff --name-only "$@" | while read filename; do
         git difftool "$@" --no-prompt "$filename" &
     done
+}
+
+function get_token() {
+    host=$1
+    token_type=$2
+    url=$host/$token_type?raw=true
+    token=$(curl --silent -L "$url")
+    echo $token
+    echo $token | pbcopy
+}
+
+function t2() {
+    HOST="http://iwcostst-c-uw2.cosv2-c-uw2.autodesk.com"
+    get_token $HOST "token2"
+}
+
+function tl2() {
+    HOST="http://127.0.0.1:5000"
+    get_token $HOST "token2"
 }

@@ -71,6 +71,7 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(rbenv virtualenv status root_indicator backg
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+fpath+=~/.zfunc
 
 export FZF_BASE=~/dotfiles/sb/fzf
 plugins=(
@@ -80,6 +81,7 @@ plugins=(
   zsh-syntax-highlighting
   fzf
   thefuck
+  poetry
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -133,7 +135,10 @@ eval "$(pyenv virtualenv-init -)"
 
 # eval "$(starship init zsh)"
 
-
 # key binding
 zle -N f_gh
 bindkey '^h' f_gh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"                                       # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm" # This loads nvm bash_completion
