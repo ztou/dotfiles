@@ -4,8 +4,8 @@
 # --------------------------------------------------
 #
 # Windows doesn't support height
-if ! { [ "`uname`" = "Darwin" ] && [ "`uname`" = "Linux" ]; }; then
-    export FZF_DEFAULT_OPTS='--no-height'
+if ! { [ "$(uname)" = "Darwin" ] && [ "$(uname)" = "Linux" ]; }; then
+  export FZF_DEFAULT_OPTS='--no-height'
 fi
 
 # remember to intall fd and add to path
@@ -27,7 +27,7 @@ export FZF_ALT_C_COMMAND='fd --type d'
 export FZF_ALT_C_OPTS='--bind "F3:toggle-preview" --preview "tree -L 2 -C {} | head -200"'
 
 # print recent dir
-unalias j 2> /dev/null
+unalias j 2>/dev/null
 j() {
   # [ $# -gt 0  ] && _z -e "$*" && return
   [ "$1" ] && _z -e "$*" && return
@@ -36,7 +36,7 @@ j() {
 
 # cd recent dir
 #
-unalias z 2> /dev/null
+unalias z 2>/dev/null
 z() {
   dir=$(j "$*")
   [ "$dir" ] && cd "$dir"
@@ -57,7 +57,7 @@ _g() {
 
 # goto dir
 #
-unalias g 2> /dev/null
+unalias g 2>/dev/null
 g() {
   dir=$(_g "$*")
   [ "$dir" ] && cd "$dir"
@@ -76,8 +76,8 @@ e() {
   IFS=$'\n'
   out=$(fzf --query="$1" --exit-0 --expect=ctrl-o --preview "bat --style=numbers --color=always {} | head -500")
   echo $out
-  key=$(head -1 <<< "$out")
-  file=$(head -2 <<< "$out" | tail -1)
+  key=$(head -1 <<<"$out")
+  file=$(head -2 <<<"$out" | tail -1)
 
   if [ -n "$file" ]; then
     [ "$key" = ctrl-o ] && code "$file" || vim "$file"
@@ -87,12 +87,12 @@ e() {
 # fuzzy grep via ag, open with code (ctrl-o) or vim
 #
 f() {
-  out=`ag --nocolor $* | fzf --exit-0 --expect=ctrl-o`
-  key=$(head -1 <<< "$out")
+  out=$(ag --nocolor $* | fzf --exit-0 --expect=ctrl-o)
+  key=$(head -1 <<<"$out")
 
-  line=$(head -2 <<< "$out" | tail -1)
-  file=$(cut -d':' -f1 <<< "$line")
-  number=$(cut -d':' -f2 <<< "$line")
+  line=$(head -2 <<<"$out" | tail -1)
+  file=$(cut -d':' -f1 <<<"$line")
+  number=$(cut -d':' -f2 <<<"$line")
 
   if [ -n "$file" ]; then
     [ "$key" = ctrl-o ] && code --goto "$file":$number || vim "$file" +$number
@@ -101,55 +101,30 @@ f() {
 
 alias v='vim -o `fzf`'
 
-fag(){
+fag() {
   local line
-  line=`ag --nocolor "$1" | fzf` \
-    && vim $(cut -d':' -f1 <<< "$line") +$(cut -d':' -f2 <<< "$line")
+  line=$(ag --nocolor "$1" | fzf) &&
+    vim $(cut -d':' -f1 <<<"$line") +$(cut -d':' -f2 <<<"$line")
 }
 
 # cd into dir repeatedly
 #
 cd() {
-    if [[ "$#" != 0 ]]; then
-        builtin cd "$@";
-        return
-    fi
-    while true; do
-        local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
-        local dir="$(printf '%s\n' "${lsd[@]}" |
-            fzf --reverse --preview '
+  if [[ "$#" != 0 ]]; then
+    builtin cd "$@"
+    return
+  fi
+  while true; do
+    local lsd=$(echo ".." && ls -p | grep '/$' | sed 's;/$;;')
+    local dir="$(printf '%s\n' "${lsd[@]}" |
+      fzf --reverse --preview '
                 __cd_nxt="$(echo {})";
                 __cd_path="$(echo $(pwd)/${__cd_nxt} | sed "s;//;/;")";
                 echo $__cd_path;
                 echo;
                 ls -p --color=always "${__cd_path}";
         ')"
-        [[ ${#dir} != 0 ]] || return 0
-        builtin cd "$dir" &> /dev/null
-    done
+    [[ ${#dir} != 0 ]] || return 0
+    builtin cd "$dir" &>/dev/null
+  done
 }
-
-# fco - checkout git branch/tag
-#
-fco() {
-  local tags branches target
-  branches=$(
-    git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-    | sed '/^$/d') || return
-  tags=$(
-    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
-  target=$(
-    (echo "$branches"; echo "$tags") |
-    fzf --no-hscroll --no-multi -n 2 \
-        --ansi) || return
-
-  # sample: branch  origin/master
-  branch=$(awk '{print $2}' <<<"$target" )
-
-  #strip the git remote: origin/
-  git checkout ${branch//origin\//}
-}
-
-
-alias gh='f_gh'
