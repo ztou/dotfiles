@@ -81,6 +81,16 @@ alias grm='git rebase master'
 alias gcn='git commit --amend --no-edit'
 alias gpr='gcn && gpf'
 
+function gft() {
+    branch=${1:-r2023}/trunk
+    git fetch origin $branch:$branch
+}
+function gct() {
+    branch=${1:-r2023}/trunk
+    git fetch origin $branch:$branch && git checkout $branch
+}
+
+
 alias egvim='export GIT_EDITOR=gvim'
 alias evim='export GIT_EDITOR=vim'
 alias ecode='export GIT_EDITOR="code -w"'
@@ -94,6 +104,7 @@ alias hb='hub browse'
 alias hp='hub pull-request'
 alias hpr='gp && hp -o'
 alias publish='gp && hp -o'
+alias hpt='gp && hp -b r2023/trunk -o'
 
 
 #   git flow

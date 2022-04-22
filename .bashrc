@@ -47,6 +47,7 @@ esac
 __git_complete ga _git_add
 __git_complete gb _git_branch
 __git_complete gco _git_checkout
+__git_complete fco _git_checkout
 
 
 #                   fzf
@@ -76,4 +77,4 @@ bind '"\C-g\C-t": "$(f_gt)\e\C-e\er"'
 bind '"\C-g\C-h": "$(f_gh)\e\C-e\er"'
 bind '"\C-g\C-r": "$(f_gr)\e\C-e\er"'
 
-source "$HOME/.cargo/env"
+# source "$HOME/.cargo/env"

@@ -7,4 +7,8 @@ export VAULT_USER=huangjoh
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export BAT_THEME="OneHalfDark"
 export PATH="${PATH}:$HOME/.local/bin"
-source "$HOME/.cargo/env"
+export GOPROXY=https://goproxy.cn
+
+if [ -f ~/.bashrc ]; then
+    . ~/.bashrc
+fi
