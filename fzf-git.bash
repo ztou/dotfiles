@@ -86,5 +86,3 @@ fco() {
   git checkout ${branch//origin\//}
 
 }
-
-alias gh='f_gh'

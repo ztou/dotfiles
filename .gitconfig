@@ -1,0 +1,33 @@
+[user]
+	name = Johnny Huang
+	email = Johnny.Huang@autodesk.com
+[core]
+	excludesfile = /Users/Johnny/.gitignore_global
+	autocrlf = input
+	pager = less
+[color]
+	ui = auto
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[credential]
+	helper = "osxkeychain "
+[push]
+	default = simple
+[pull]
+	ff = only
+[diff]
+	tool = am
+[merge]
+	tool = am
+[difftool "am"]
+    cmd = '/Applications/Araxis Merge.app/Contents/Utilities/compare' \"$LOCAL\" \"$REMOTE\"
+[mergetool "am"]
+    cmd = '/Applications/Araxis Merge.app/Contents/Utilities/compare' -wait -merge -3 \"$LOCAL\" \"$BASE\" \"$REMOTE\" \"$MERGED\"
+    trustExitCode = true
+[hub]
+     host = git.autodesk.com
+     protocol = https
+[http "https://github.com"]
+	proxy = socks5://127.0.0.1:8087
