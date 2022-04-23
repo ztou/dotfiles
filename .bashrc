@@ -25,7 +25,6 @@ function source_bash() {
 
 source_bash $DOTFILES/.alias.bash
 source_bash $DOTFILES/sb/z/z.sh
-source_bash $DOTFILES/sb/hub/etc/hub.bash_completion.sh
 
 # disable hub alias since it causes 0.07 second delay on running bash command
 #

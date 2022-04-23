@@ -92,11 +92,11 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree;;
+        brew install hub jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree;;
 
     MINGW64*)
         test_app scoop
-        scoop install 7zip ag bat curl dig fd jq less which;;
+        scoop install hub 7zip ag bat curl dig fd jq less which;;
     *)
 esac
 
