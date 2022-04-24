@@ -78,6 +78,7 @@ backup_link ~/.zshenv
 create_link ~/.zshenv
 backup_link ~/.zshrc
 create_link ~/.zshrc
+create_link ~/.p10k.zsh
 
 echo "init submodules..."
 git submodule update --init --recursive
@@ -104,7 +105,7 @@ esac
 if [ -d ~/.oh-my-zsh ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/themes/powerlevel9k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 fi
 
 echo "--------------------------------------------------"
