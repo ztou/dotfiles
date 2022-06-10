@@ -92,6 +92,7 @@ function gct() {
 
 
 alias egvim='export GIT_EDITOR=gvim'
+alias envim='export GIT_EDITOR=nvim'
 alias evim='export GIT_EDITOR=vim'
 alias ecode='export GIT_EDITOR="code -w"'
 

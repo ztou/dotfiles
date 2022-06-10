@@ -8,6 +8,8 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
 export BAT_THEME="OneHalfDark"
 export PATH="${PATH}:$HOME/.local/bin"
 export GOPROXY=https://goproxy.cn
+export SERVERLESS_PLATFORM_VENDOR=aws
+export GIT_EDITOR=nvim
 
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc

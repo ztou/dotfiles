@@ -68,6 +68,7 @@ create_link ~/.inputrc
 create_link ~/.vimrc
 create_link ~/.vsvimrc
 create_link ~/.xvimrc
+create_link ~/.config/nvim/init.vim
 create_link ~/.tmux.conf
 create_link ~/.isort.cfg
 create_link ~/.clang-format
@@ -93,11 +94,11 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install hub jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree;;
+        brew install hub jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree starship;;
 
     MINGW64*)
         test_app scoop
-        scoop install hub 7zip ag bat curl dig fd jq less which;;
+        scoop install hub 7zip ag bat curl dig fd jq less which starship;;
     *)
 esac
 

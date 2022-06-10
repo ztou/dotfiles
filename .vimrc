@@ -37,6 +37,10 @@ if has('win32')
     source $VIMRUNTIME/mswin.vim
 endif
 
+if !has('nvim')
+    set ttymouse=xterm2
+endif
+
 filetype plugin indent on
 
 " --- General settings ---
@@ -83,6 +87,7 @@ set hlsearch
 "clear the search
 nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
 
+set spell
 set encoding=utf-8
 set termencoding=utf-8
 set fileencodings=ucs-bom,utf-8,chinese,cp936
@@ -93,7 +98,6 @@ set cursorline
 hi cursorline ctermbg=darkgrey
 set complete=.,w,b,
 set nofoldenable
-set nospell
 " disable swap file
 set noswapfile
 "set lines=30
@@ -242,3 +246,4 @@ nmap <Leader>e :e ~\.vimrc<CR>
 
 nmap <Leader>d :e ++ff=dos<CR>
 nmap <Leader>u :e ++ff=unix<CR>
+
