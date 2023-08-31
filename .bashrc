@@ -77,3 +77,5 @@ bind '"\C-g\C-h": "$(f_gh)\e\C-e\er"'
 bind '"\C-g\C-r": "$(f_gr)\e\C-e\er"'
 
 # source "$HOME/.cargo/env"
+
+eval "$(starship init bash)"

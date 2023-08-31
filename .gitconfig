@@ -30,4 +30,4 @@
      host = git.autodesk.com
      protocol = https
 [http "https://github.com"]
-	proxy = socks5://127.0.0.1:8087
+	proxy = socks5://127.0.0.1:7891

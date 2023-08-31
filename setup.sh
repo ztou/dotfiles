@@ -98,7 +98,7 @@ case "$(uname -s)" in
 
     MINGW64*)
         test_app scoop
-        scoop install hub 7zip ag bat curl dig fd jq less which starship;;
+        scoop install hub 7zip ag bat curl fd jq less which starship;;
     *)
 esac
 

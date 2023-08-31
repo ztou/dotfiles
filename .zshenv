@@ -10,5 +10,5 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 export PATH="${PATH}:$HOME/.local/bin"
 #source "$HOME/.cargo/env"
 export GOPROXY=https://goproxy.cn
-export GIT_EDITOR=nvim
+# export GIT_EDITOR=nvim
 export SERVERLESS_PLATFORM_VENDOR=aws

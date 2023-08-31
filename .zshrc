@@ -136,7 +136,6 @@ eval "$(pyenv init -)"
 
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
-# eval "$(starship init zsh)"
 
 # key binding
 zle -N f_gh
