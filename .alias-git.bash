@@ -32,7 +32,7 @@ alias gca='git commit --amend'
 alias gb='git branch'
 alias gc='git commit'
 alias gr='git remote'
-alias gco='git checkout'
+#alias gco='git checkout'
 alias grh='git reset HEAD'
 alias grr='git reset origin/$(gcb)'
 

@@ -94,7 +94,7 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install hub jq bash-completion thefuck pyenv pyenv-virtualenv pipenv tree starship;;
+        brew install hub jq bash-completion thefuck pyenv poetry tree starship;;
 
     MINGW64*)
         test_app scoop

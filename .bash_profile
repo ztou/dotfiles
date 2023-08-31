@@ -14,3 +14,5 @@ export GIT_EDITOR=nvim
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+export SERVERLESS_PLATFORM_VENDOR=aws
+# . "$HOME/.cargo/env"

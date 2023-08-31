@@ -50,8 +50,10 @@ f_gr() {
     cut -d$'\t' -f1
 }
 
+#
 # fco - checkout git branch/tag
 #
+unalias fco 2>/dev/null
 fco() {
 
   is_in_git_repo || return
@@ -84,5 +86,35 @@ fco() {
 
   #strip the git remote: origin/
   git checkout ${branch//origin\//}
+
+}
+
+#
+# gco - checkout local git branch
+#
+unalias gco 2>/dev/null
+gco() {
+  is_in_git_repo || return
+
+  if [ "$1" ]; then
+    git checkout $*
+    return
+  fi
+
+  local tags branches target
+  branches=$(
+    git --no-pager branch \
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" |
+      sed '/^$/d'
+  ) || return
+  target=$(
+    echo "$branches" | fzf --no-hscroll --no-multi -n 2 --ansi
+  ) || return
+
+  # sample: branch  master
+  branch=$(awk '{print $2}' <<<"$target")
+
+  #strip the git remote: origin/
+  git checkout ${branch}
 
 }

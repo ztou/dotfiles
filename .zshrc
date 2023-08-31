@@ -132,7 +132,7 @@ source ~/dotfiles/.ssh-agent.bash
 eval "$(hub alias -s)"
 
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 
@@ -151,3 +151,6 @@ export NVM_DIR="$HOME/.nvm"
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 eval "$(starship init zsh)"
+
+# Added by serverless binary installer
+export PATH="$HOME/.serverless/bin:$PATH"

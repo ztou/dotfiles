@@ -16,6 +16,7 @@ if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
 fi
 
 function ex() {
+    #export $(cat .env | xargs)
     cat ~/.env && export $(grep -v '^#' ~/.env | tr $v_ending ' ')
 }
 
@@ -38,6 +39,7 @@ alias nv='nvim'
 
 alias pc='pbcopy'
 alias pp='pbpaste'
+alias dc='docker compose'
 
 run() {
     n=${1:-5}
