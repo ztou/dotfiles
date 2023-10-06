@@ -69,49 +69,21 @@ alias gcp='git cherry-pick'
 alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 
-alias gfs='git flow feature start'
-alias gff='git flow feature finish'
-
 alias gfm='git fetch origin master:master'
 alias gcm='git fetch origin master:master && git checkout master'
 alias gcom='git fetch origin master:refs/remotes/origin/master && git checkout origin/master'
 
-alias grom='git rebase origin/master'
-alias grm='git rebase master'
 alias gcn='git commit --amend --no-edit'
 alias gpr='gcn && gpf'
 
-function gft() {
-    branch=${1:-r2023}/trunk
-    git fetch origin $branch:$branch
-}
-function gct() {
-    branch=${1:-r2023}/trunk
-    git fetch origin $branch:$branch && git checkout $branch
-}
-
-
-alias egvim='export GIT_EDITOR=gvim'
-alias envim='export GIT_EDITOR=nvim'
-alias evim='export GIT_EDITOR=vim'
-alias ecode='export GIT_EDITOR="code -w"'
-
-#                   hub
-# --------------------------------------------------
 alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gp='git push -u origin $(gcb)'
 alias gpf='git push origin +$(gcb)'
+
+#                   hub
+# --------------------------------------------------
 alias hb='hub browse'
 alias hp='hub pull-request'
 alias hpr='gp && hp -o'
 alias publish='gp && hp -o'
-alias hpt='gp && hp -b r2023/trunk -o'
-
-
-#   git flow
-# --------------------------------------------------
-alias gffs='git flow feature start'
-alias gfd='git fetch origin develop:develop'
-alias gcd='git fetch origin develop:develop && git checkout develop'
-alias gcod='git fetch origin develop:refs/remotes/origin/develop && git checkout origin/develop'
 

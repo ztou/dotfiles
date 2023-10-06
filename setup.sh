@@ -84,9 +84,6 @@ create_link ~/.p10k.zsh
 echo "init submodules..."
 git submodule update --init --recursive
 
-echo "installing fzf..."
-"$DOTFILES/sb/fzf/install" --key-bindings --no-completion --update-rc
-
 echo "trying to install utils tools..."
 case "$(uname -s)" in
     Linux*)
@@ -94,20 +91,22 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install hub jq bash-completion thefuck pyenv poetry tree starship;;
+        brew install hub bat fd jq bash-completion tree starship
+        brew tap homebrew/cask-fonts
+        brew install --cask font-fira-code
+        brew install fzf
+        # To install useful key bindings and fuzzy completion:
+        $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc;;
 
     MINGW64*)
         test_app scoop
-        scoop install hub 7zip ag bat curl fd jq less which starship;;
+        scoop install hub 7zip ag bat curl fd jq less which starship
+        scoop bucket add nerd-fonts
+        scoop install firacode
+        scoop install fzf;;
     *)
 esac
 
-# plugins for zsh
-if [ -d ~/.oh-my-zsh ]; then
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-fi
 
 echo "--------------------------------------------------"
 echo "      ~/dotfiles are installed successfully"

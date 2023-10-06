@@ -1,9 +1,6 @@
 [submodule "sb/z"]
 	path = sb/z
 	url = https://github.com/rupa/z.git
-[submodule "sb/fzf"]
-	path = sb/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "sb/vault-utils"]
 	path = sb/vault-utils
 	url = ../../huangjoh/vault-utils

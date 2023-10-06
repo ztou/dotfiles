@@ -49,6 +49,13 @@ c() {
   [ "$dir" ] && echo "opening $dir with code..." && code "$dir"
 }
 
+# open recent dir with code
+#
+n() {
+  dir=$(j "$*")
+  [ "$dir" ] && echo "opening $dir with neovim..." && nvim "$dir"
+}
+
 #
 _g() {
   dir=$(fd --type d "$*" | fzf --preview "tree -L 2 -C {} | head -200")
