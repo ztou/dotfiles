@@ -50,4 +50,5 @@ alias dc='docker compose'
 source $DOTFILES/sb/vault-utils/.alias-vault.bash
 source $DOTFILES/.alias-git.bash
 source $DOTFILES/.alias-jenkins.bash
-# source $DOTFILES/.priv.bash
+
+[ -f ~/.priv.bash ] && source ~/.priv.bash
