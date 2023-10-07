@@ -91,7 +91,7 @@ case "$(uname -s)" in
 
     Darwin*)
         test_app brew
-        brew install hub bat fd jq bash-completion tree starship
+        brew install hub bat fd jq bash-completion tree starship zsh-autosuggestions zsh-syntax-highlighting
         brew tap homebrew/cask-fonts
         brew install --cask font-fira-code
         brew install fzf

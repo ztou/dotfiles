@@ -24,8 +24,9 @@ function source_bash() {
 }
 
 source_bash $DOTFILES/.alias.bash
-source_bash $DOTFILES/sb/z/z.sh
+alias reload='source ~/.bashrc'
 
+source_bash $DOTFILES/sb/z/z.sh
 
 __git_complete ga _git_add
 __git_complete gb _git_branch

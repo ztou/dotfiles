@@ -12,6 +12,9 @@ source ~/dotfiles/sb/z/z.sh
 source ~/.fzfrc.bash
 source ~/dotfiles/fzf-git.bash
 
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
 # start ssh-agent
 # source ~/dotfiles/.ssh-agent.bash
 
