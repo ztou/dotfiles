@@ -2,7 +2,7 @@
 
 # readlink - readlink symbol link location
 #
-DOTFILES="$(cd "$(dirname "$(readlink ${BASH_SOURCE[0]:-$0:A})")" >/dev/null && pwd)"
+DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]:-$0:A}")" >/dev/null && pwd)"
 
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
@@ -36,3 +36,7 @@ bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
 eval "$(starship init zsh)"
+
+export LS_COLORS="$(vivid generate one-dark)"
+alias ls="gls --color"
+alias ll="ls -al"

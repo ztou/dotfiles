@@ -83,7 +83,7 @@ Linux*)
 
 Darwin*)
     test_app brew
-    brew install hub bat fd jq bash-completion tree starship zsh-autosuggestions zsh-syntax-highlighting
+    brew install hub bat fd jq bash-completion tree starship zsh-autosuggestions zsh-syntax-highlighting vivid
     brew tap homebrew/cask-fonts
     brew install --cask font-fira-code
     brew install fzf
