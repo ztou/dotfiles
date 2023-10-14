@@ -45,10 +45,8 @@ alias dr='docker run -it'
 alias dre='docker run -it --env-file ${ENV_FILE}'
 alias dc='docker compose'
 
-#                   other
+#                   git
 # --------------------------------------------------
-source $DOTFILES/sb/vault-utils/.alias-vault.bash
 source $DOTFILES/.alias-git.bash
-source $DOTFILES/.alias-jenkins.bash
 
 [ -f ~/.priv.bash ] && source ~/.priv.bash

@@ -87,7 +87,6 @@ alias hp='hub pull-request'
 alias hpr='gp && hp -o'
 alias publish='gp && hp -o'
 
-
 #                   lazygit
 # --------------------------------------------------
 alias lg='lazygit'
