@@ -35,8 +35,13 @@ bindkey "^[[F" end-of-line
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
 
-eval "$(starship init zsh)"
-
+# vivid
 export LS_COLORS="$(vivid generate one-dark)"
 alias ls="gls --color"
 alias ll="ls -al"
+
+# pyenv
+source $DOTFILES/.pyenv.bash
+
+# startship
+eval "$(starship init zsh)"
