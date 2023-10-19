@@ -43,5 +43,5 @@ alias ll="ls -al"
 # pyenv
 source $DOTFILES/.pyenv.bash
 
-# startship
+# starship
 eval "$(starship init zsh)"

@@ -12,6 +12,14 @@ alias so='scoop'
 alias ecode='export GIT_EDITOR="code -w"'
 alias ce='code ~/.env'
 
+function ex() {
+    cat ~/.env && export $(cat ~/.env | grep -v '^#' | tr -d '\r')
+}
+
+function uex() {
+    cat ~/.env && unset $(cat ~/.env | grep -v '^#' | sed -E -n 's/^([^=]+)=.*/\1/p')
+}
+
 #                   python
 # --------------------------------------------------
 alias pbuild='python setup.py sdist bdist_wheel --universal'

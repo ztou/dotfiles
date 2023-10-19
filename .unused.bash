@@ -65,19 +65,4 @@ if [ ! -d $vim_bundle ]; then
     popd || exit
 fi
 
-#                   Windows specific
-# --------------------------------------------------
-v_ending='\r\n'
 
-if [ "$(uname)" = "Darwin" ] || [ "$(uname)" = "Linux" ]; then
-    v_ending='\n'
-fi
-
-#export $(cat .env | xargs)
-function ex() {
-    cat ~/.env && export $(grep -v '^#' ~/.env | tr $v_ending ' ')
-}
-
-function uex() {
-    cat ~/.env && unset $(grep -v '^#' ~/.env | sed -E 's/(.*)=.*/\1/' | tr $v_ending ' ')
-}
