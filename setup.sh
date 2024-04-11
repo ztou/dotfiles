@@ -91,6 +91,7 @@ Darwin*)
     brew install fzf
     # To install useful key bindings and fuzzy completion:
     $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc
+    brew install lazygit
     ;;
 
 MINGW64*)
@@ -99,6 +100,8 @@ MINGW64*)
     scoop bucket add nerd-fonts
     scoop install firacode
     scoop install fzf
+    scoop bucket add extras
+    scoop install lazygit
     ;;
 
 *) ;;

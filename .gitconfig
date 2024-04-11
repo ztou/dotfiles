@@ -3,7 +3,7 @@
 	email = Johnny.Huang@autodesk.com
 [core]
 	excludesfile = /Users/Johnny/.gitignore_global
-	autocrlf = input
+	autocrlf = true
 	pager = less
 [color]
 	ui = auto
