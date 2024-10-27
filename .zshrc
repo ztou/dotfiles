@@ -46,3 +46,5 @@ source $DOTFILES/sb/vault-utils/.alias-vault.bash
 
 # starship
 eval "$(starship init zsh)"
+
+autoload -Uz compinit && compinit

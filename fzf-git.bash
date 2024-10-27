@@ -63,10 +63,12 @@ fco() {
     return
   fi
 
+  format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)"
+  header="CTRL-A (all branches), CTRL-L (local branches)"
   local tags branches target
   branches=$(
     git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" |
+      --format="$format" |
       sed '/^$/d'
   ) || return
   tags=$(
@@ -77,8 +79,10 @@ fco() {
       echo "$branches"
       echo "$tags"
     ) |
-      fzf --no-hscroll --no-multi -n 2 \
-        --ansi
+      fzf --no-hscroll --no-multi -n 2 --ansi \
+        --header="$header" \
+        --bind "ctrl-l:reload(git branch)" \
+        --bind "ctrl-a:reload(git branch -a)"
   ) || return
 
   # sample: branch  origin/master
