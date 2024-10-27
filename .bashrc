@@ -31,3 +31,7 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 eval "$(starship init bash)"
+
+#source $DOTFILES/sb/vault-utils/.alias-vault.bash
+
+#source $DOTFILES/.pyenv.bash

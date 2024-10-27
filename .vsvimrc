@@ -20,7 +20,7 @@ map  <F4>                       :vsc Edit.CommentSelection<CR>
 map  <S-F4>                     :vsc Edit.UnCommentSelection<CR>
 
 "1-9 are not reconigzed by VIM.
-"nmap <Leader>9                  : vsc Tools.ExternalCommand9<CR>
+"nmap <Leader>9                  :vsc Tools.ExternalCommand9<CR>
 
 " clear the search result
 noremap <esc> <esc>:noh<CR><esc>
@@ -32,7 +32,7 @@ nmap <Leader>/ :s#\\#/#g<CR>
 nmap <Leader>\ :s#/#\#g<CR>
 
 nmap <Leader>w                  yaw<CR>
-map  <Leader>f                  =a{<CR> 
+map  <Leader>f                  =a{<CR>
 nmap <C-c>                      : let @* = expand("%:p")<CR>
 
-nmap <Tab>                      :vsc VAssistX.OpenCorrespondingFile<CR>
+nmap <Tab>                      :vsc EditorContextMenus.CodeWindow.ToggleHeaderCodeFile<CR>

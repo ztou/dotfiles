@@ -2,7 +2,7 @@
 
 ## How to use
 
-Open a terminal and run commands below:
+Open git bash in Admin mode and run commands below:
 
 ``` bash
 cd ~
