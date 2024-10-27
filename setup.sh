@@ -33,15 +33,6 @@ function create_link() {
             echo "create link: $full_link to $source_link successfully"
         fi
     fi
-
-    old_link=$full_link.old
-    if [ -f "$old_link" ]; then
-        echo "source $old_link in $full_link"
-        {
-            echo ""
-            echo "source \"$old_link\""
-        } >>"$full_link"
-    fi
 }
 
 backup_link ~/.bash_profile
@@ -62,6 +53,9 @@ backup_link ~/.zshenv
 create_link ~/.zshenv
 backup_link ~/.zshrc
 create_link ~/.zshrc
+
+backup_link $HOME/Documents/PowerShell/profile.ps1
+create_link $HOME/Documents/PowerShell/profile.ps1
 
 echo "init submodules..."
 git submodule update --init --recursive
